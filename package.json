@@ -1,21 +1,33 @@
 {
   "name": "api-practice",
   "version": "1.0.0",
-  "description": "api test",
+  "description": "test",
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LeadJockey/api-practice.git"
   },
-  "keywords": ["api","rest"],
+  "keywords": [
+    "api",
+    "rest"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LeadJockey/api-practice/issues"
   },
-  "homepage": "https://github.com/LeadJockey/api-practice#readme"
+  "homepage": "https://github.com/LeadJockey/api-practice#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "joi": "^13.7.0"
+  }
 }
