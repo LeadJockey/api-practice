@@ -1,0 +1,21 @@
+{
+  "name": "api-practice",
+  "version": "1.0.0",
+  "description": "api test",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeadJockey/api-practice.git"
+  },
+  "keywords": ["api","rest"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeadJockey/api-practice/issues"
+  },
+  "homepage": "https://github.com/LeadJockey/api-practice#readme"
+}
