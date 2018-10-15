@@ -1,52 +1,31 @@
 const model = require('./user.model');
-const users = model.getUsers();
-const errorMsg = {
-    400:'The user with the given ID was not found.',
-    404:'The user with the given NAME was alread exist.'
-};
+const validateUser = require('./user.validate');
 
-exports.readUsers = (req, res) => res.send(users);
-
-exports.readUser = (req, res) => {
-    const targetUser = users.find(user => user.id === parseInt(req.params.id, 10));
-    if (!targetUser) return res.status(404).send(errorMsg[400]);
-
-    res.send(targetUser);
-};
-
-exports.createUser = (req, res) => {
-    const sameNameUser = users.find(user => user.name === req.body.name);
-    if (sameNameUser) return res.status(400).send(errorMsg[404]);
-
-    const { error } = model.validateUser(req.body);
+exports.createUser = (req, res, next) => {
+    const { error } = validateUser(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    const newUser = {
-        id: users.length + 1,
-        name: req.body.name
-    };
-    users.push(newUser);
-    res.send(newUser);
+    next();
 };
 
-exports.updateUser = (req, res) => {
-    const targetUser = users.find(user => user.id === parseInt(req.params.id, 10));
-    if (!targetUser) return res.status(400).send(errorMsg[400]);
+exports.readUsers = (req, res, next) => {
+    next();
+};
 
-    const sameNameUser = users.find(user => user.name === req.body.name);
-    if (sameNameUser) return res.status(400).send(errorMsg[404]);
+exports.readUser = (req, res, next) => {
+    next();
+};
 
-    const { error } = model.validateUser(req.body);
+exports.updateUserById = (req, res, next) => {
+    const { error } = validateUser(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    targetUser.name = req.body.name;
-    res.send(targetUser);
+    next();
 };
 
-exports.deleteUser = (req, res) => {
-    const targetUser = users.find(user => user.id === parseInt(req.params.id, 10));
-    if (!targetUser) return res.status(400).send(errorMsg[400]);
+exports.deleteUser = (req, res, next) => {
+    const { error } = validateUser(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
-    users.splice(targetUser.id, 1);
-    res.send(users)
+    next();
 };
