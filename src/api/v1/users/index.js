@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.post('/', controller.createUser, model.createUser);
 router.get('/', controller.readUsers, model.readUsers);
-router.get('/:id', controller.readUser, model.readUserById);
-router.put('/:id', controller.updateUserById, model.updateUserById);
-router.delete('/:id', controller.deleteUser, model.deleteUserById);
+router.get('/:name', controller.readUserByName, model.readUserByName);
+router.put('/:name', controller.updateUserByName, model.updateUserByName);
+router.delete('/:name', controller.deleteUserByName, model.deleteUserByName);
 
 module.exports = router;
 
